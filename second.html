@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Raju Sharma - Portfolio</title>
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        /* Base styles and variables */
+        :root {
+            --bg-color: #1f242d;
+            --second-bg-color: #323946;
+            --text-color: #fff;
+            --main-color: #0ef;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            text-decoration: none;
+            font-family: 'Roboto', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        html {
+            font-size: 62.5%;
+            overflow-x: hidden;
+        }
+
+        body {
+            background: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        /* Header styles */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 2rem 9%;
+            background: var(--bg-color);
+            display: flex;
+            align-items: center;
+            z-index: 100;
+            box-shadow: 0 .1rem 1rem rgba(0, 0, 0, .2);
+        }
+
+        .logo {
+            font-size: 2.5rem;
+            color: var(--text-color);
+            font-weight: 600;
+            cursor: default;
+            margin-right: auto;
+        }
+
+        #menu-icon {
+            font-size: 3.6rem;
+            color: var(--text-color);
+            display: none;
+            cursor: pointer;
+        }
+
+        .navbar a {
+            position: relative;
+            font-size: 1.7rem;
+            color: var(--text-color);
+            font-weight: 500;
+            margin-left: 4rem;
+            transition: .3s;
+        }
+
+        .navbar a:hover,
+        .navbar a.active {
+            color: var(--main-color);
+        }
+
+        .navbar a.active::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -6px;
+            width: 100%;
+            height: .2rem;
+            background: var(--main-color);
+        }
+
+        /* Section styling */
+        section {
+            min-height: 100vh;
+            padding: 10rem 9% 2rem;
+        }
+
+        .home {
+            display: flex;
+            align-items: center;
+            background: linear-gradient(rgba(31, 36, 45, 0.9), rgba(31, 36, 45, 0.8)), url('https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3') no-repeat;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .home-content {
+            max-width: 60rem;
+            z-index: 99;
+        }
+
+        .home-content h3 {
+            font-size: 3.2rem;
+            font-weight: 700;
+            margin-bottom: .3rem;
+        }
+
+        .home-content h1 {
+            font-size: 5.6rem;
+            font-weight: 700;
+            margin-bottom: .3rem;
+            line-height: 1.3;
+        }
+
+        .home-content p {
+            font-size: 1.6rem;
+            margin: 2rem 0;
+        }
+
+        .home-content span {
+            color: var(--main-color);
+        }
+
+        .social-media {
+            margin: 2.5rem 0;
+        }
+
+        .social-media a {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            width: 4rem;
+            height: 4rem;
+            background: transparent;
+            border: .2rem solid var(--main-color);
+            border-radius: 50%;
+            box-shadow: 0 0 .5rem var(--main-color);
+            font-size: 2rem;
+            color: var(--main-color);
+            margin: 0 1.5rem 1.5rem 0;
+            transition: .5s ease;
+        }
+
+        .social-media a:hover {
+            background: var(--main-color);
+            color: var(--second-bg-color);
+            box-shadow: 0 0 1.5rem var(--main-color);
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 1.2rem 2.8rem;
+            background: var(--main-color);
+            border-radius: 4rem;
+            box-shadow: 0 0 1rem var(--main-color);
+            font-size: 1.6rem;
+            color: var(--bg-color);
+            letter-spacing: .1rem;
+            font-weight: 600;
+            transition: .5s ease;
+        }
+
+        .btn:hover {
+            box-shadow: 0 0 2rem var(--main-color);
+            transform: scale(1.05);
+        }
+
+        /* About section */
+        .about {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 4rem;
+            background: var(--second-bg-color);
+        }
+
+        .about-img img {
+            width: 35vw;
+            border-radius: 50%;
+            box-shadow: 0 0 2rem var(--main-color);
+            animation: floatImage 4s ease-in-out infinite;
+        }
+
+        @keyframes floatImage {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-2.4rem); }
+            100% { transform: translateY(0); }
+        }
+
+        .heading {
+            font-size: 4.5rem;
+            text-align: center;
+            margin-bottom: 5rem;
+        }
+
+        .about-content h2 {
+            text-align: left;
+            line-height: 1.2;
+        }
+
+        .about-content h3 {
+            font-size: 2.6rem;
+            margin-bottom: 1rem;
+        }
+
+        .about-content p {
+            font-size: 1.6rem;
+            margin: 2rem 0 3rem;
+        }
+
+        /* Services section */
+        .services {
+            min-height: auto;
+            padding-bottom: 7rem;
+        }
+
+        .services-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+
+        .services-box {
+            flex: 1 1 30rem;
+            background: var(--second-bg-color);
+            padding: 3rem 2rem 4rem;
+            border-radius: 2rem;
+            text-align: center;
+            border: .2rem solid var(--bg-color);
+            transition: .5s ease;
+        }
+
+        .services-box:hover {
+            border-color: var(--main-color);
+            transform: scale(1.02);
+        }
+
+        .services-box i {
+            font-size: 7rem;
+            color: var(--main-color);
+        }
+
+        .services-box h3 {
+            font-size: 2.6rem;
+            margin: 2rem 0;
+        }
+
+        .services-box p {
+            font-size: 1.6rem;
+            margin: 0 0 3rem;
+        }
+
+        /* Portfolio section */
+        .portfolio {
+            background: var(--second-bg-color);
+            padding-bottom: 10rem;
+        }
+
+        .portfolio-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+            align-items: center;
+            gap: 2.5rem;
+        }
+
+        .portfolio-box {
+            position: relative;
+            display: flex;
+            border-radius: 2rem;
+            box-shadow: 0 0 1rem rgba(0, 0, 0, .3);
+            overflow: hidden;
+            height: 30rem;
+        }
+
+        .portfolio-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: .5s ease;
+        }
+
+        .portfolio-box:hover img {
+            transform: scale(1.1);
+        }
+
+        .portfolio-layer {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(rgba(0, 0, 0, 0.1), var(--main-color));
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            text-align: center;
+            padding: 0 4rem;
+            transform: translateY(100%);
+            transition: .5s ease;
+        }
+
+        .portfolio-box:hover .portfolio-layer {
+            transform: translateY(0);
+        }
+
+        .portfolio-layer h4 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .portfolio-layer p {
+            font-size: 1.6rem;
+            margin: 0 0 1.5rem;
+        }
+
+        .portfolio-layer a {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            width: 5rem;
+            height: 5rem;
+            background: var(--text-color);
+            border-radius: 50%;
+            transition: .3s ease;
+        }
+
+        .portfolio-layer a:hover {
+            transform: scale(1.2);
+        }
+
+        .portfolio-layer a i {
+            font-size: 2rem;
+            color: var(--bg-color);
+        }
+
+        /* Contact section */
+        .contact h2 {
+            margin-bottom: 3rem;
+        }
+
+        .contact form {
+            max-width: 70rem;
+            margin: 1rem auto;
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .input-box {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        .input-box input,
+        textarea {
+            width: 100%;
+            padding: 1.5rem;
+            font-size: 1.6rem;
+            color: var(--text-color);
+            background: var(--second-bg-color);
+            border-radius: .8rem;
+            margin: .7rem 0;
+            box-shadow: 0 0 .5rem rgba(0, 0, 0, .2);
+        }
+
+        .input-box input {
+            width: 49%;
+        }
+
+        textarea {
+            resize: none;
+            height: 20rem;
+        }
+
+        .contact form .btn {
+            margin-top: 2rem;
+            cursor: pointer;
+        }
+
+        /* Footer */
+        .footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            padding: 2rem 9%;
+            background: var(--second-bg-color);
+        }
+
+        .footer-text p {
+            font-size: 1.6rem;
+        }
+
+        .footer-iconTop a {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            padding: .8rem;
+            background: var(--main-color);
+            border-radius: .8rem;
+            transition: .5s ease;
+        }
+
+        .footer-iconTop a:hover {
+            box-shadow: 0 0 1rem var(--main-color);
+        }
+
+        .footer-iconTop a i {
+            font-size: 2.4rem;
+            color: var(--second-bg-color);
+        }
+
+        /* BREAKPOINTS */
+        @media (max-width: 1200px) {
+            html {
+                font-size: 55%;
+            }
+        }
+
+        @media (max-width: 991px) {
+            .header {
+                padding: 2rem 3%;
+            }
+            
+            section {
+                padding: 10rem 3% 2rem;
+            }
+            
+            .footer {
+                padding: 2rem 3%;
+            }
+        }
+
+        @media (max-width: 768px) {
+            #menu-icon {
+                display: block;
+            }
+            
+            .navbar {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                padding: 1rem 3%;
+                background: var(--bg-color);
+                border-top: .1rem solid rgba(0, 0, 0, .2);
+                box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .1);
+                display: none;
+            }
+            
+            .navbar.active {
+                display: block;
+            }
+            
+            .navbar a {
+                display: block;
+                font-size: 2rem;
+                margin: 3rem 0;
+                text-align: center;
+            }
+            
+            .home {
+                flex-direction: column;
+            }
+            
+            .home-content h3 {
+                font-size: 2.6rem;
+            }
+            
+            .home-content h1 {
+                font-size: 5rem;
+            }
+            
+            .about {
+                flex-direction: column-reverse;
+            }
+            
+            .about img {
+                width: 70vw;
+                margin-top: 4rem;
+            }
+            
+            .input-box input {
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 450px) {
+            html {
+                font-size: 50%;
+            }
+            
+            .contact form .input-box input {
+                width: 100%;
+            }
+            
+            .footer {
+                flex-direction: column-reverse;
+                gap: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <a href="#" class="logo">Portfolio</a>
+        <i class="fa-solid fa-bars" id="menu-icon"></i>
+        <nav class="navbar">
+            <a href="#home" class="active">Home</a>
+            <a href="#about">About</a> 
+            <a href="#services">Services</a>
+            <a href="#portfolio">Portfolio</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+
+    <!-- Home Section -->
+    <section class="home" id="home">
+        <div class="home-content">
+            <h3>Hello, It's me</h3>
+            <h1>Raju Sharma</h1>
+            <h3>And I'm a <span>Fullstack Developer!</span></h3>
+            <p>Passionate about creating innovative web solutions that solve real-world problems. With expertise in both frontend and backend technologies, I build robust, scalable applications.</p>
+            <div class="social-media">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#"><i class="fab fa-github"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+                <a href="#"><i class="fab fa-whatsapp"></i></a>
+            </div>
+            <a href="#" class="btn">Download CV</a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="about-img">
+            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Raju Sharma">
+        </div>
+        <div class="about-content">
+            <h2 class="heading">About <span>Me</span></h2>
+            <h3>Fullstack Developer</h3>
+            <p>Enthusiastic and detail-oriented Full Stack Developer with a solid understanding of both front-end and back-end technologies. Skilled in building responsive web applications using HTML, CSS, JavaScript, React.js, and server-side development with Node.js, Express.js, and MongoDB. Strong problem-solving ability, good communication skills, and a passion for learning modern technologies. Seeking an opportunity to contribute to dynamic development teams and deliver impactful digital solutions.</p>
+            <a href="#" class="btn">Read More</a>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <h2 class="heading">Our <span>Services</span></h2>
+        <div class="services-container">
+            <div class="services-box">
+                <i class="fa-solid fa-code"></i>
+                <h3>Web Development</h3>
+                <p>We offer fast, modern, and responsive web development services to help businesses, startups, and individuals build high-performing websites that deliver results.</p>
+                <a href="#" class="btn">Read More</a>
+            </div>
+            <div class="services-box">
+                <i class="fa-solid fa-paintbrush"></i>
+                <h3>Graphic Design</h3>
+                <p>Creative and professional graphic design services including logos, branding, social media posts, and marketing materials that make your brand stand out.</p>
+                <a href="#" class="btn">Read More</a>
+            </div>
+            <div class="services-box">
+                <i class="fa-solid fa-chart-simple"></i>
+                <h3>Digital Marketing</h3>
+                <p>Boost your online presence with our digital marketing services, including SEO, social media marketing, and content strategies that drive real growth.</p>
+                <a href="#" class="btn">Read More</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section class="portfolio" id="portfolio">
+        <h2 class="heading">Latest <span>Projects</span></h2>
+        <div class="portfolio-container">
+            <div class="portfolio-box">
+                <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3" alt="Project">
+                <div class="portfolio-layer">
+                    <h4>E-Commerce Platform</h4>
+                    <p>Full-featured online shopping platform with payment integration</p>
+                    <a href="#"><i class="fa-solid fa-up-right-from-square"></i></a>
+                </div>
+            </div>
+            <div class="portfolio-box">
+                <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3" alt="Project">
+                <div class="portfolio-layer">
+                    <h4>Social Media Dashboard</h4>
+                    <p>Analytics platform for tracking social media performance</p>
+                    <a href="#"><i class="fa-solid fa-up-right-from-square"></i></a>
+                </div>
+            </div>
+            <div class="portfolio-box">
+                <img src="https://images.unsplash.com/photo-1581276879432-15e50529f34b?ixlib=rb-4.0.3" alt="Project">
+                <div class="portfolio-layer">
+                    <h4>Task Management App</h4>
+                    <p>Productivity tool for teams to manage projects efficiently</p>
+                    <a href="#"><i class="fa-solid fa-up-right-from-square"></i></a>
+                </div>
+            </div>
+            <div class="portfolio-box">
+                <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-4.0.3" alt="Project">
+                <div class="portfolio-layer">
+                    <h4>Fitness Tracker</h4>
+                    <p>Mobile application for tracking workouts and nutrition</p>
+                    <a href="#"><i class="fa-solid fa-up-right-from-square"></i></a>
+                </div>
+            </div>
+            <div class="portfolio-box">
+                <img src="https://images.unsplash.com/photo-1553877522-43269d4ea984?ixlib=rb-4.0.3" alt="Project">
+                <div class="portfolio-layer">
+                    <h4>Real Estate Portal</h4>
+                    <p>Property listing platform with advanced search features</p>
+                    <a href="#"><i class="fa-solid fa-up-right-from-square"></i></a>
+                </div>
+            </div>
+            <div class="portfolio-box">
+                <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3" alt="Project">
+                <div class="portfolio-layer">
+                    <h4>Finance Dashboard</h4>
+                    <p>Data visualization tool for financial analytics</p>
+                    <a href="#"><i class="fa-solid fa-up-right-from-square"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <h2 class="heading">Contact <span>Me</span></h2>
+        <form action="#">
+            <div class="input-box">
+                <input type="text" placeholder="Full Name" required>
+                <input type="email" placeholder="Email Address" required>
+            </div>
+            <div class="input-box">
+                <input type="number" placeholder="Mobile Number" required>
+                <input type="text" placeholder="Email Subject" required>
+            </div>
+            <textarea name="message" cols="30" rows="10" placeholder="Your Message" required></textarea>
+            <input type="submit" value="Send Message" class="btn">
+        </form>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-text">
+            <p>Copyright &copy;2025 by Iphonecoder || All Right Reserved.</p>
+        </div>
+        <div class="footer-iconTop">
+            <a href="#home"><i class="fa-solid fa-arrow-up"></i></a>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Toggle menu icon
+        const menuIcon = document.querySelector('#menu-icon');
+        const navbar = document.querySelector('.navbar');
+        
+        menuIcon.onclick = () => {
+            navbar.classList.toggle('active');
+        };
+        
+        // Close navbar when clicking on a link
+        const navLinks = document.querySelectorAll('.navbar a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                navbar.classList.remove('active');
+            });
+        });
+        
+        // Sticky header
+        window.onscroll = () => {
+            const header = document.querySelector('.header');
+            header.classList.toggle('sticky', window.scrollY > 100);
+            
+            // Close navbar when scrolling
+            navbar.classList.remove('active');
+        };
+        
+        // Scroll to top
+        document.querySelector('.footer-iconTop a').addEventListener('click', (e) => {
+            e.preventDefault();
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+        
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    window.scrollTo({
+                        top: target.offsetTop - 70,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Active section highlighting
+        const sections = document.querySelectorAll('section');
+        const navLinksHeader = document.querySelectorAll('.navbar a');
+        
+        window.addEventListener('scroll', () => {
+            let current = '';
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                
+                if (pageYOffset >= (sectionTop - 300)) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            navLinksHeader.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').includes(current)) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
